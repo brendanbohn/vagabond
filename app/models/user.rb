@@ -6,11 +6,15 @@ class User < ActiveRecord::Base
 	# for paperclip
 	has_attached_file :profile_pic, styles: { large: "1000x1000>", medium: "200X200#", thumb: "100x100>" }, default_url: "missing.png"
   validates_attachment_content_type :profile_pic, content_type: /\Aimage\/.*\Z/
-	
+
 	BCrypt::Engine.cost = 12
 	validates :email, presence: true
 	validates :password_digest, presence: true
 	validates_confirmation_of :password
+
+	def to_param
+    "#{id}-#{username}"
+  end
 
 	def password
 		@password
