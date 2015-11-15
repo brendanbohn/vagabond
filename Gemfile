@@ -51,5 +51,7 @@ group :development do
   gem 'paperclip', '~> 4.3', '>= 4.3.1'
 
   gem 'papercrop', '~> 0.3.0'
+  # for pretty urls
+  gem 'friendly_id', '~> 5.1'
 end
 

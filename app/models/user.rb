@@ -12,9 +12,8 @@ class User < ActiveRecord::Base
 	validates :password_digest, presence: true
 	validates_confirmation_of :password
 
-	def to_param
-    "#{id}-#{username}"
-  end
+	extend FriendlyId
+	friendly_id :username, use: :slugged
 
 	def password
 		@password
