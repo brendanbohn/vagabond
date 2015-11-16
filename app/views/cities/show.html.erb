@@ -35,43 +35,6 @@
 		<!-- pagination -->
 		<div id="infinite-scrolling">
 		  <%= will_paginate @posts %>
-<div class="container" id="city">
-	<div class="row">
-		<!-- User Info -->
-		<div class="col-md-4 text-center" id="city-info">
-			<div id="city-info-content">
-			<!-- VIDEO GOES HERE -->
-			<video autoplay loop muted id="city-video">
-				<source src="../app/assets/videos/sanfrancisco.mp4" type="video/mp4">
-			</video>
-			<h2><%= @city.name %></h2>	
-			</div>
-		</div>
-		<!-- Profile Stream -->
-		<div class="col-md-6">
-			<div class="row" id="profile-content">
-			<div class="col-sm-6">
-				<% @posts.reverse.each do |p| %>
-					<div class="posts">
-						<% if @user %>
-							<h3><strong><%= link_to p.title, post_path(p) %></strong></h3> 
-						<% else %>
-							<h3><strong><%= p.title %></strong></h3> 
-						<% end %>
-						<span class="pull-right">in <%= p.city %></span>
-						<br>
-						<%= truncate(p.content, length: 100, omission: "... %s") % link_to('read more', post_path(p)) %>
-						<p>Posted <%= time_ago_in_words (p.created_at)%> ago by 
-							<!-- logic to find author of each p -->
-							<% user_id = p.user_id %>
-							<% author = User.find(user_id) %>
-							<%= author.username %>
-						</p>
-						<hr>
-					</div>
-				<% end %>	
-			</div>
-			</div>
 		</div>
 	</div>
 </div>
