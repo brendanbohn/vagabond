@@ -4,8 +4,8 @@
 */
 ​
 html{
-    min-height:100%;
-    position:relative;
+ min-height:100%;
+ position:relative;
 }
 body{
     height:100%;
@@ -22,8 +22,7 @@ body{
 	padding-left: 40px;
 }
 ​
-#user-info p,
-#user-info h4 {
+#user-info p {
 	text-align: left;
 	color: white !important;
 }
@@ -38,7 +37,6 @@ body{
 #profile-content {
 	color: 'black';
 	text-align: right;
-	margin: 100px 30px 10px 80px;
 }
 #profile-pic {
 	height: 200px;
@@ -64,4 +62,12 @@ body{
 	clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
 	-webkit-clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
 	background-color: #262626;
+}
+#current-city,
+#joined-at,
+#full-name {
+	color: #d9d9d9 !important;
+}
+#contributer {
+	color: #d9d9d9 !important;;
 }

@@ -4,15 +4,15 @@
 		<div class="col-sm-4" id="user-info">
 			<br>
 			<%= image_tag(@user.profile_pic.url(:medium), :class => "img-circle", :id => "profile-pic") %>
-			<h3><%= @user.username %></h3>
-			<h4><%= current_user.first_name + " " + current_user.last_name %></h4>
-			<p> Current City : <%= @user.current_city %></p>
-			<p> Joined <%= time_ago_in_words(@user.created_at) %> ago </p>
+			<h3 id="username"><%= @user.username %></h3>
+			<p id="full-name"><%= current_user.first_name + " " + current_user.last_name %></p>
+			<p id="current-city"> Current City : <%= @user.current_city %></p>
+			<p id="joined-at"> Joined <%= time_ago_in_words(@user.created_at) %> ago </p>
 			<%= link_to 'Edit Profile', edit_user_path, class: 'btn btn-primary' %>
 			<%= link_to "New Post", new_post_path , class: "btn btn-primary" %>
 			<br>
-			<div id="contributor">
-				<p> Contributor to: <br> 
+			<div>
+				<p id="contributor"> Contributor to: <br> 
 					<%= @contributors[0] %><br>  
 					<%= @contributors[1] %><br>
 					<%= @contributors[2] %>
@@ -22,12 +22,11 @@
 <!-- Profile Stream -->
 		<div class="col-sm-6 col-sm-offset-6" id="profile-content">
 			<% @posts.reverse.each do |p| %> 
-				<div class="well">
-					<p><h3><%= link_to p.title, post_path(p), class: "profile-link" %> <small> in <%= p.city %></small></h3></p>
-					<p><%= truncate(p.content, length: 100, omission: "... %s") % link_to('read more', post_path(p), class: "read-link") %></p>
-					<p><span class="posted">Posted <%= time_ago_in_words (p.created_at)%> ago by </span><%= @user.username %></p><br>
-				</div>
-			<% end %>	
+				<p><h3><%= link_to p.title, post_path(p), class: "profile-link" %> <small> in <%= p.city %></small></h3></p>
+				<p><%= truncate(p.content, length: 100, omission: "... %s") % link_to('read more', post_path(p), class: "read-link") %></p>
+				<p><span class="posted">Posted <%= time_ago_in_words (p.created_at)%> ago by </span><%= @user.username %></p><br>
+				<hr>
+			<% end %>
 		</div>
 	</div>
 </div>
