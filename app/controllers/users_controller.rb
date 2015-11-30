@@ -19,31 +19,31 @@ class UsersController < ApplicationController
   end
 
   def count(posts, cities)
-    @count_sf = 0
-    @count_l = 0
-    @count_t = 0
-    @posts.each do |post|
+    count_sf = 0
+    count_l = 0
+    count_t = 0
+    posts.each do |post|
       if post.city_id == 1
-        @count_sf = @count_sf + 1
+        count_sf = count_sf + 1
       elsif post.city_id == 2
-        @count_l = @count_l + 1
+        count_l = count_l + 1
       else 
-        @count_t = @count_t + 1
+        count_t = count_t + 1
       end
-      if @count_sf > 1
-        @sf = "San Francisco, #{@count_sf} posts"
-      elsif @count_sf == 1
-        @sf = "San Francisco, #{@count_sf} post"
+      if count_sf > 1
+        @sf = "San Francisco, #{count_sf} posts"
+      elsif count_sf == 1
+        @sf = "San Francisco, #{count_sf} post"
       end
-      if @count_l > 1
-         @t =  "London, #{@count_l} posts"
-      elsif @count_l == 1
-        @t =  "London, #{@count_l} post"
+      if count_l > 1
+         @t =  "London, #{count_l} posts"
+      elsif count_l == 1
+        @t =  "London, #{count_l} post"
       end
-      if @count_t > 1
-        @l =  "Tokyo, #{@count_t} posts"
-      elsif @count_t == 1
-        @l =  "Tokyo, #{@count_t} post"
+      if count_t > 1
+        @l =  "Tokyo, #{count_t} posts"
+      elsif count_t == 1
+        @l =  "Tokyo, #{count_t} post"
       end
     end
     @contributors = @sf, @l, @t
