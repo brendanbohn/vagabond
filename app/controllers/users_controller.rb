@@ -7,15 +7,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = Post.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 4).order('created_at DESC')
+    # find user
     @user = User.friendly.find(params[:id])
     # added for friendly id if name is edited to not break url 
     if request.path != user_path(@user)
       redirect_to @user, status: :moved_permanently
     end
+    # posts for display and pagination
+    @posts = Post.where(:user_id => current_user.id).paginate(page: params[:page], per_page: 4).order('created_at DESC')
+    # posts for count function (all posts by user, not just on first page)
+    @posts_count = Post.where(:user_id => current_user.id)
     @cities = City.all
-
-    count(@posts, @cities)
+    # count posts per city for each user
+    count(@posts_count, @cities)
   end
 
   def count(posts, cities)
